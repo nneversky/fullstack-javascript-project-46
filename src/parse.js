@@ -1,12 +1,14 @@
-module.exports = readFileOnDirectory = (nameFile) => {
-    const path = require('node:path')
-    const fs = require('fs')
-    const pathOnDirectory = path.resolve(process.cwd(), '../') + '\\__fixtures__\\' + nameFile
-    fs.readFile(pathOnDirectory, 'utf8', (err, data) => {
-        if (err) {
-            console.error('File not found!!!')
-            return
-        }
-        console.log(data)
-    })
+import path from 'node:path'
+import { readFileSync } from 'node:fs'
+
+export default (nameFile) => {
+    const pathOnDirectory =
+        path.resolve(process.cwd(), '../') + '\\__fixtures__\\' + nameFile
+    try {
+        const data = readFileSync(pathOnDirectory, 'utf8')
+        const parsedDataJson = JSON.parse(data)
+        return parsedDataJson
+    } catch (err) {
+        return (`File (${nameFile}) not found!, ${err}`)
+    }
 }
