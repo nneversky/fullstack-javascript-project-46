@@ -2,7 +2,7 @@ module.exports = {
     "env": {
         "es2021": true
     },
-    "extends": "standard-with-typescript",
+    "extends": "eslint:recommended",
     "overrides": [
         {
             "env": {
@@ -21,5 +21,7 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
-    }
+        "no-console": "off",
+        "no-undef": "off"
+      }
 }
