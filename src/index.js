@@ -1,4 +1,4 @@
-export default (objOne, objTwo) => {
+const enumerationObjElements = (objOne, objTwo) => {
     const objResult = {}
     Object.keys(objOne).forEach((keyObjOne) => {
         Object.keys(objTwo).forEach((keyObjTwo) => {
@@ -21,4 +21,29 @@ export default (objOne, objTwo) => {
         })
     })
     return objResult
+}
+
+export const generateAnswerAndCheckOnError = (
+    firstJsonFile,
+    secondJsonFile
+) => {
+    if (
+        typeof firstJsonFile === 'object' &&
+        typeof secondJsonFile === 'object'
+    ) {
+        return enumerationObjElements(firstJsonFile, secondJsonFile)
+    } else {
+        if (
+            typeof firstJsonFile !== 'object' &&
+            typeof secondJsonFile !== 'object'
+        ) {
+            return `${firstJsonFile}\n${secondJsonFile}`
+        } else {
+            if (typeof firstJsonFile !== 'object') {
+                return firstJsonFile
+            } else {
+                return secondJsonFile
+            }
+        }
+    }
 }

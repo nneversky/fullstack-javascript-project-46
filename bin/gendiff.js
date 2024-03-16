@@ -2,7 +2,7 @@
 // import genDiff from '@hexlet/code';
 import { program } from 'commander'
 import readFileOnDirectory from '../src/parse.js'
-import enumerationObjElements from '../src/index.js'
+import { generateAnswerAndCheckOnError } from '../src/index.js'
 
 let firstJsonFile
 let secondJsonFile
@@ -16,24 +16,8 @@ program
     .action((filepath1, filepath2) => {
         firstJsonFile = readFileOnDirectory(filepath1)
         secondJsonFile = readFileOnDirectory(filepath2)
-        if (
-            typeof firstJsonFile === 'object' &&
-            typeof secondJsonFile === 'object'
-        ) {
-            console.log(enumerationObjElements(firstJsonFile, secondJsonFile))
-        } else {
-            if (
-                typeof firstJsonFile !== 'object' &&
-                typeof secondJsonFile !== 'object'
-            ) {
-                console.log(`${firstJsonFile}\n${secondJsonFile}`)
-            } else {
-                console.log(
-                    typeof firstJsonFile !== 'object'
-                        ? firstJsonFile
-                        : secondJsonFile
-                )
-            }
-        }
+        console.log(
+            generateAnswerAndCheckOnError(firstJsonFile, secondJsonFile)
+        )
     })
 program.parse(process.argv)
