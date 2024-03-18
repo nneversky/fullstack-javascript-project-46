@@ -7,6 +7,7 @@ import { generateAnswerAndCheckOnError } from '../src/index.js'
 let firstJsonFile
 let secondJsonFile
 
+//           node gendiff filepath1.json filepath2.json
 program
     .version('1.0.0')
     .argument('<filepath1>')
