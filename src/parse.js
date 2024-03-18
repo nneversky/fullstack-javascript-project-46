@@ -13,6 +13,6 @@ export default (nameFile) => {
         const parsedDataJson = JSON.parse(data)
         return parsedDataJson
     } catch (err) {
-        return (`File (${nameFile}) not found!, ${err}`)
+        return (`File (${nameFile}) not found!`)
     }
 }
