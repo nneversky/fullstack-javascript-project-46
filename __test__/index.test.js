@@ -1,6 +1,7 @@
 import { generateAnswerAndCheckOnError } from '../src/index.js'
 import { test, expect } from '@jest/globals'
 import readFileOnDirectory from '../src/parse.js'
+import path from 'path'
 
 const file1 = {
     host: 'hexlet.io',
@@ -20,8 +21,10 @@ test('readFile', () => {
 })
 
 test('readErrorFile', () => {
+    const currentDirectory = process.cwd()
+    const diskName = path.parse(currentDirectory).root
     expect(readFileOnDirectory('filepath2')).toEqual(
-        "File (filepath2) not found!, Error: ENOENT: no such file or directory, open 'C:\\Users\\skele\\Documents\\MyProjectJs\\fullstack-javascript-project-46\\__fixtures__\\filepath2'"
+        `File (filepath2) not found!, Error: ENOENT: no such file or directory, open '${diskName}Users\\skele\\Documents\\MyProjectJs\\fullstack-javascript-project-46\\__fixtures__\\filepath2'`
     )
 })
 
