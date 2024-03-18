@@ -20,8 +20,8 @@ jobs:
 
             - name: Add Tests
               run: |
-              npm ci 
-              npm run test
+                npm ci 
+                npm run test
 
             - name: Hexlet project check
               uses: hexlet/project-action@release
