@@ -21,7 +21,7 @@ test('readFile', () => {
 
 test('readErrorFile', () => {
     expect(readFileOnDirectory('filepath2')).toEqual(
-        'File (filepath2) not found!'
+        "File (filepath2) not found! Path to the file: 'C:\\Users\\skele\\Documents\\MyProjectJs\\fullstack-javascript-project-46\\__fixtures__\\filepath2'"
     )
 })
 
