@@ -2,32 +2,49 @@ import { generateAnswerAndCheckOnError } from '../src/index.js'
 import { test, expect } from '@jest/globals'
 import readFileOnDirectory from '../src/parse.js'
 
-const file1 = {
-    host: 'hexlet.io',
-    timeout: 50,
-    proxy: '123.234.53.22',
-    follow: false,
-}
-
-const file2 = {
-    timeout: 20,
-    verbose: true,
-    host: 'hexlet.io',
-}
-
 test('readFile', () => {
-    expect(readFileOnDirectory('filepath1.json')).toEqual(file1)
+    expect(readFileOnDirectory('filepath1.json')).toEqual({
+        host: 'hexlet.io',
+        timeout: 50,
+        proxy: '123.234.53.22',
+        follow: false,
+    })
 })
 
 test('readErrorFile', () => {
     const pathFile = readFileOnDirectory('filepath2')
-    const nameLocalDisk = pathFile.split("'")[1].at(0)
-    expect(pathFile).toEqual(
-        `File (filepath2) not found! Path to the file: '${nameLocalDisk}:\\Users\\skele\\Documents\\MyProjectJs\\fullstack-javascript-project-46\\__fixtures__\\filepath2'`
-    )
+    expect(pathFile).toEqual('!!File (filepath2) not found!!')
 })
 
-test('testOneDimensionalObj', () => {
+test('test1OneDimensionalObj', () => {
+    const file1 = readFileOnDirectory('filepath1.json')
+    const file2 = readFileOnDirectory('filepath2.json')
+    expect(generateAnswerAndCheckOnError(file1, file2)).toEqual({
+        '+ verbose': true,
+        host: 'hexlet.io',
+        '- timeout': 50,
+        '+ timeout': 20,
+        '- proxy': '123.234.53.22',
+        '- follow': false,
+    })
+})
+
+test('test2OneDimensionalYaml', () => {
+    const file1 = readFileOnDirectory('filepath1.yaml')
+    const file2 = readFileOnDirectory('filepath2.yaml')
+    expect(generateAnswerAndCheckOnError(file1, file2)).toEqual({
+        '+ verbose': true,
+        host: 'hexlet.io',
+        '- timeout': 50,
+        '+ timeout': 20,
+        '- proxy': '123.234.53.22',
+        '- follow': false,
+    })
+})
+
+test('test3OneDimensionalYml', () => {
+    const file1 = readFileOnDirectory('filepath1.yml')
+    const file2 = readFileOnDirectory('filepath2.yml')
     expect(generateAnswerAndCheckOnError(file1, file2)).toEqual({
         '+ verbose': true,
         host: 'hexlet.io',
