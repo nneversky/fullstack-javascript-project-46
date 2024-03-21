@@ -20,8 +20,10 @@ test('readFile', () => {
 })
 
 test('readErrorFile', () => {
-    expect(readFileOnDirectory('filepath2')).toEqual(
-        "File (filepath2) not found! Path to the file: 'C:\\Users\\skele\\Documents\\MyProjectJs\\fullstack-javascript-project-46\\__fixtures__\\filepath2'"
+    const pathFile = readFileOnDirectory('filepath2')
+    const nameLocalDisk = pathFile.split("'")[1].at(0)
+    expect(pathFile).toEqual(
+        `File (filepath2) not found! Path to the file: '${nameLocalDisk}:\\Users\\skele\\Documents\\MyProjectJs\\fullstack-javascript-project-46\\__fixtures__\\filepath2'`
     )
 })
 
