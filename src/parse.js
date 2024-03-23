@@ -20,6 +20,6 @@ export default (nameFile) => {
 
         return yaml.load(readFileSync(pathOnDirectory, 'utf8'))
     } catch (err) {
-        return `!!File (${nameFile}) not found!!`
+        return `File (${nameFile}) not found!`
     }
 }

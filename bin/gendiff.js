@@ -17,8 +17,10 @@ program
     .action((filepath1, filepath2) => {
         firstJsonFile = readFileOnDirectory(filepath1)
         secondJsonFile = readFileOnDirectory(filepath2)
-        console.log(
-            generateAnswerAndCheckOnError(firstJsonFile, secondJsonFile)
+        const diff = generateAnswerAndCheckOnError(
+            firstJsonFile,
+            secondJsonFile
         )
+        console.log(JSON.stringify(diff, null, 2))
     })
 program.parse(process.argv)

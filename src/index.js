@@ -1,26 +1,28 @@
-const enumerationObjElements = (objOne, objTwo) => {
-    const objResult = {}
-    Object.keys(objOne).forEach((keyObjOne) => {
-        Object.keys(objTwo).forEach((keyObjTwo) => {
+const generateDiff = (obj1, obj2) => {
+    const keys = new Set([...Object.keys(obj1), ...Object.keys(obj2)])
+    const diff = {}
+
+    keys.forEach((key) => {
+        if (!(key in obj1)) {
+            diff[`+ ${key}`] = obj2[key]
+        } else if (!(key in obj2)) {
+            diff[`- ${key}`] = obj1[key]
+        } else if (obj1[key] !== obj2[key]) {
             if (
-                keyObjOne === keyObjTwo &&
-                objOne[keyObjOne] === objTwo[keyObjTwo]
+                typeof obj1[key] === 'object' &&
+                typeof obj2[key] === 'object'
             ) {
-                objResult[keyObjOne] = objOne[keyObjOne]
-            } else if (
-                keyObjOne === keyObjTwo &&
-                objOne[keyObjOne] !== objTwo[keyObjTwo]
-            ) {
-                objResult[`- ${keyObjTwo}`] = objOne[keyObjOne]
-                objResult[`+ ${keyObjTwo}`] = objTwo[keyObjTwo]
-            } else if (!Object.hasOwn(objOne, keyObjTwo)) {
-                objResult[`+ ${keyObjTwo}`] = objTwo[keyObjTwo]
-            } else if (!Object.hasOwn(objTwo, keyObjOne)) {
-                objResult[`- ${keyObjOne}`] = objOne[keyObjOne]
+                diff[key] = generateDiff(obj1[key], obj2[key])
+            } else {
+                diff[`- ${key}`] = obj1[key]
+                diff[`+ ${key}`] = obj2[key]
             }
-        })
+        } else {
+            diff[key] = obj1[key]
+        }
     })
-    return objResult
+
+    return diff
 }
 
 export const generateAnswerAndCheckOnError = (
@@ -31,13 +33,13 @@ export const generateAnswerAndCheckOnError = (
         typeof firstJsonFile === 'object' &&
         typeof secondJsonFile === 'object'
     ) {
-        return enumerationObjElements(firstJsonFile, secondJsonFile)
+        return generateDiff(firstJsonFile, secondJsonFile)
     } else {
         if (
             typeof firstJsonFile !== 'object' &&
             typeof secondJsonFile !== 'object'
         ) {
-            return `${firstJsonFile}\n${secondJsonFile}`
+            return `${firstJsonFile} AND ${secondJsonFile}`
         } else {
             if (typeof firstJsonFile !== 'object') {
                 return firstJsonFile
