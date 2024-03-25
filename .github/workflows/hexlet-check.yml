@@ -6,24 +6,19 @@
 name: hexlet-check
 
 on:
-    push:
-        branches:
-            - '**'
-        tags:
-            - '**'
+  push:
+    branches:
+      - '**'
+    tags:
+      - '**'
 
 jobs:
-    build:
-        runs-on: windows-latest
-        steps:
-            - uses: actions/checkout@v3
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
-            - name: Add Tests
-              run: |
-                npm ci 
-                npm run test
-
-            - name: Hexlet project check
-              uses: hexlet/project-action@release
-              with:
-                  hexlet-id: ${{ secrets.HEXLET_ID }}
+      - name: Hexlet project check
+        uses: hexlet/project-action@release
+        with:
+          hexlet-id: ${{ secrets.HEXLET_ID }}
