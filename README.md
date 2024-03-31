@@ -9,3 +9,5 @@
 ### Test coverage:
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/1d7dd057218971971a87/test_coverage)](https://codeclimate.com/github/nneversky/fullstack-javascript-project-46/test_coverage)
+
+[![asciicast](https://asciinema.org/a/6t0RKtzPr8EIWguDIkRlTmGES.svg)](https://asciinema.org/a/6t0RKtzPr8EIWguDIkRlTmGES)
