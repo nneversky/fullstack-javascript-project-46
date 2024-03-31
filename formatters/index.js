@@ -10,7 +10,6 @@ export default (filepath1, filepath2, formatName) => {
                 null,
                 2
             )
-
         return generateAnswerAndCheckError(filepath1, filepath2)
     } else if (formatName.format === 'plain') {
         if (generateAnswerAndCheckError(filepath1, filepath2) === true)
@@ -18,6 +17,6 @@ export default (filepath1, filepath2, formatName) => {
 
         return generateAnswerAndCheckError(filepath1, filepath2)
     } else {
-        return `"Unknown format: (${formatName.format})"`
+        return `Unknown format: "${formatName.format}"`
     }
 }
