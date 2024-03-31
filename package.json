@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "type": "module",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/nneversky/fullstack-javascript-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/nneversky/fullstack-javascript-project-46/actions)",
+  "description": "Difference calculator in 2 files (json, yaml, yml)",
   "main": "gendiff.js",
   "scripts": {
     "test": "jest",
@@ -15,7 +15,6 @@
     "@hexlet/immutable-fs-trees": "^0.7.1",
     "@jest/globals": "^29.7.0",
     "commander": "^12.0.0",
-    "csv-parser": "^3.0.0",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   },
