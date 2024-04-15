@@ -1,17 +1,12 @@
 import { resolve, extname } from 'path'
 import { readFileSync } from 'fs'
-import yaml from 'js-yaml'
 
-export default (onePath) => {
-    const arrYamlFile = ['.yaml', '.yml']
-    const absolutePath1 = resolve(process.cwd(), `../__fixtures__/${onePath}`)
+export const gendiff = (oneFileName, twoFileName, nameFormat) => {
+    const absolutePath1 = resolve(process.cwd(), `../__fixtures__/${oneFileName}`)
+    const ext1 = extname(absolutePath1)
+    const filedata1 = readFileSync(absolutePath1, 'utf-8')
 
-    try {
-        if (!arrYamlFile.includes(extname(absolutePath1))) {
-            return JSON.parse(readFileSync(absolutePath1, 'utf-8'))
-        }
-        return yaml.load(readFileSync(absolutePath1, 'utf-8'), 'utf8')
-    } catch (err) {
-        return `File node found '${absolutePath1}'`
-    }
+    const absolutePath2 = resolve(process.cwd(), `../__fixtures__/${twoFileName}`)
+    const ext2 = extname(absolutePath2)
+    const filedata2 = readFileSync(absolutePath2, 'utf-8')
 }
