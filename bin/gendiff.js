@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import { program } from 'commander'
-import generateDiff from '../src/formatters/index.js'
-import gendiff from '../src/index.js'
+import { gendiff } from '../src/index.js'
+import { getParsedData } from '../src/parse.js'
+import compareFiles from '../src/formatters/getCompareFiles.js'
 
 program
     .version('1.0.0')
@@ -13,8 +14,11 @@ program
         'output format: plain or (recursive default)'
     )
 
-    .action((filepath1, filepath2, type) => {
-        const diff = generateDiff(gendiff(filepath1), gendiff(filepath2), type)
-        console.log(diff)
+    .action((filepath1, filepath2) => {
+        const diff = gendiff(filepath1, filepath2)
+        const data1 = getParsedData(diff.file1.data, diff.file1.ext)
+        const data2 = getParsedData(diff.file2.data, diff.file2.ext)
+
+        console.log(compareFiles(data1, data2))
     })
 program.parse(process.argv)

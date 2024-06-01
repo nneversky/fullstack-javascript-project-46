@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "description": "Difference calculator in 2 files (json, yaml, yml)",
-  "main": "gendiff.js",
+  "main": "bin/gendiff.js",
   "scripts": {
     "test": "jest",
     "lint": "eslint --fix --ext .js,.jsx ."
