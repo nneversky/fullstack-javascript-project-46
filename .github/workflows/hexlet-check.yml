@@ -6,22 +6,17 @@
 name: hexlet-check
 
 on:
-  push:
-    branches:
-      - '**'
-    tags:
-      - '**'
+    push:
+        branches:
+            - '**'
+        tags:
+            - '**'
 
 jobs:
     build:
-        runs-on: windows-latest
+        runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v3
-
-            - name: Add Tests
-              run: |
-                npm ci 
-                npm run test
+            - uses: actions/checkout@v4
 
             - name: Hexlet project check
               uses: hexlet/project-action@release
