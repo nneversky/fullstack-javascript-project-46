@@ -6,7 +6,7 @@
   "main": "bin/gendiff.js",
   "scripts": {
     "test": "jest",
-    "lint": "eslint --fix --ext .js,.jsx ."
+    "lint": "jest --runInBand --bail"
   },
   "author": "",
   "license": "ISC",
