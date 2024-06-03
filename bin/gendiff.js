@@ -18,6 +18,7 @@ program
         const diff = gendiff(filepath1, filepath2)
         const data1 = getParsedData(diff[0].name, diff[0].ext)
         const data2 = getParsedData(diff[1].name, diff[1].ext)
+        
         console.log(makeAstTree(data1, data2))
     })
 program.parse(process.argv)
