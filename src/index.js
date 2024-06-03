@@ -1,9 +1,7 @@
-import { resolve, extname } from 'path'
+import { resolve, extname, parse } from 'path'
 import { readFileSync } from 'fs'
 
 export const gendiff = (oneFileName, twoFileName) => {
-    const objProp = {}
-
     const absolutePath1 = resolve(process.cwd(), oneFileName)
     const ext1 = extname(absolutePath1)
     const filedata1 = readFileSync(absolutePath1, 'utf-8')
@@ -12,8 +10,10 @@ export const gendiff = (oneFileName, twoFileName) => {
     const ext2 = extname(absolutePath2)
     const filedata2 = readFileSync(absolutePath2, 'utf-8')
 
-    objProp.file1 = { filepath: absolutePath1, ext: ext1, data: filedata1 }
-    objProp.file2 = { filepath: absolutePath2, ext: ext2, data: filedata2 }
+    const obj1 = parse(filedata1)
+    obj1.ext = ext1
+    const obj2 = parse(filedata2)
+    obj2.ext = ext2
 
-    return objProp
+    return [obj1, obj2]
 }

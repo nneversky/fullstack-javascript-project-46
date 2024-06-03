@@ -2,7 +2,7 @@
 import { program } from 'commander'
 import { gendiff } from '../src/index.js'
 import { getParsedData } from '../src/parse.js'
-import compareFiles from '../src/formatters/getCompareFiles.js'
+import { makeAstTree } from '../src/makeAstTree.js'
 
 program
     .version('1.0.0')
@@ -16,9 +16,8 @@ program
 
     .action((filepath1, filepath2) => {
         const diff = gendiff(filepath1, filepath2)
-        const data1 = getParsedData(diff.file1.data, diff.file1.ext)
-        const data2 = getParsedData(diff.file2.data, diff.file2.ext)
-
-        console.log(compareFiles(data1, data2))
+        const data1 = getParsedData(diff[0].name, diff[0].ext)
+        const data2 = getParsedData(diff[1].name, diff[1].ext)
+        console.log(makeAstTree(data1, data2))
     })
 program.parse(process.argv)
