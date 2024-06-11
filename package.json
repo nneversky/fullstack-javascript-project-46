@@ -5,7 +5,7 @@
   "description": "Difference calculator in 2 files (json, yaml, yml)",
   "main": "bin/gendiff.js",
   "scripts": {
-    "test": "npx jest"
+    "test": "jest --color --runInBand --bail"
   },
   "author": "",
   "license": "ISC",

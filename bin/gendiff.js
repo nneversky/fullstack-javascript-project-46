@@ -4,12 +4,11 @@ import { gendiff } from '../src/index.js'
 import { getParsedData } from '../src/parse.js'
 import { makeAstTree } from '../src/makeAstTree.js'
 import getFormattedContent from '../src/formatters/index.js'
-const program = new Command();
+const program = new Command()
 
 program
     .version('1.0.0')
-    .argument('<filepath1>')
-    .argument('<filepath2>')
+    .arguments('<filepath1> <filepath2>')
     .description('Compares two configuration files and shows a difference.')
     .option(
         '-f, --format [type]',
@@ -25,4 +24,4 @@ program
         const astTree = makeAstTree(data1, data2)
         console.log(getFormattedContent(astTree, format))
     })
-program.parse(process.argv)
+program.parse()
