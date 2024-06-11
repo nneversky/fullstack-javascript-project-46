@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-import { program } from 'commander'
+import { Command } from 'commander'
 import { gendiff } from '../src/index.js'
 import { getParsedData } from '../src/parse.js'
 import { makeAstTree } from '../src/makeAstTree.js'
 import getFormattedContent from '../src/formatters/index.js'
+const program = new Command();
 
 program
     .version('1.0.0')
@@ -24,4 +25,4 @@ program
         const astTree = makeAstTree(data1, data2)
         console.log(getFormattedContent(astTree, format))
     })
-program.parse()
+program.parse(process.argv)
