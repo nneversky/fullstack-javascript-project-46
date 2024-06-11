@@ -1,6 +1,7 @@
 import { test, expect } from '@jest/globals'
 import { gendiff } from '../src/index.js'
 
+
 test('testExt', () => {
     const diff = gendiff(
         '__fixtures__/filepath1.json',
