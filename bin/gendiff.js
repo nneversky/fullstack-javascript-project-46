@@ -24,4 +24,4 @@ program
         const astTree = makeAstTree(data1, data2)
         console.log(getFormattedContent(astTree, format))
     })
-program.parse()
+// program.parse()
