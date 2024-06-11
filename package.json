@@ -5,6 +5,7 @@
   "description": "Difference calculator in 2 files (json, yaml, yml)",
   "main": "bin/gendiff.js",
   "scripts": {
+    "test": "jest",
     "lint": "eslint --fix --ext .js,.jsx ."
   },
   "author": "",
