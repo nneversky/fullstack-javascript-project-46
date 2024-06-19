@@ -4,8 +4,9 @@ export const formatObject = (obj) => {
     return formattedString
 }
 
-export const recursiveFormat = (arr) => {
+export const stylishFormat = (arr) => {
     const obj = {}
+    console.log(arr)
     arr.forEach((value) => {
         if (value.status === 'added') {
             obj[`+ ${value.key}`] = value.value
@@ -21,7 +22,7 @@ export const recursiveFormat = (arr) => {
             obj[`+ ${value.key}`] = value.newValue
             ///
         } else if (value.status === 'nested') {
-            obj[value.key] = recursiveFormat(value.children)
+            obj[value.key] = stylishFormat(value.children)
         }
     })
     return obj

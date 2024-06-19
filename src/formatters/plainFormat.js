@@ -9,10 +9,10 @@ export const plainFormat = (arr, parentKey = '') => {
                     : JSON.stringify(value.value)
             return `Property '${fullKey}' was added with value: ${formattedValue}`
             ///
-        } else if (value.status === 'removed') {
+        } if (value.status === 'removed') {
             return `Property '${fullKey}' was removed`
             ///
-        } else if (value.status === 'changed') {
+        } if (value.status === 'changed') {
             const formattedOldValue =
                 typeof value.oldValue === 'object' && value.oldValue !== null
                     ? '[complex value]'
@@ -23,7 +23,7 @@ export const plainFormat = (arr, parentKey = '') => {
                     : JSON.stringify(value.newValue)
             return `Property '${fullKey}' was updated. From ${formattedOldValue} to ${formattedNewValue}`
             ///
-        } else if (value.status === 'nested') {
+        } if (value.status === 'nested') {
             return plainFormat(value.children, fullKey)
         }
         return []
