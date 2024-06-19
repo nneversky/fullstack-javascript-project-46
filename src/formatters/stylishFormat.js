@@ -22,6 +22,8 @@ export const stylishFormat = (arr) => {
             ///
         } else if (value.status === 'nested') {
             obj[value.key] = stylishFormat(value.children)
+        } else {
+            throw new Error(`Unknown type ${value.status}.`);
         }
     })
     return obj
