@@ -6,7 +6,6 @@ export const formatObject = (obj) => {
 
 export const stylishFormat = (arr) => {
     const obj = {}
-    console.log(arr)
     arr.forEach((value) => {
         if (value.status === 'added') {
             obj[`+ ${value.key}`] = value.value
