@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "description": "Difference calculator in 2 files (json, yaml, yml)",
-  "main": "bin/gendiff.js",
+  "main": "./index.js",
   "scripts": {
     "test": "npx jest"
   },
