@@ -1,7 +1,7 @@
 export const formatObject = (obj) => {
     const formattedString = JSON.stringify(obj, null, 4)
-        .replace(/"([^"]+)":/g, '$1:') // Убираем кавычки из ключей
-        .replace(/: "([^"]+)"/g, ': $1'); // Убираем кавычки из значений
+        .replace(/"([^"]+)":/g, '$1:')
+        .replace(/: "([^"]+)"/g, ': $1'); 
     return formattedString;
 };
 
