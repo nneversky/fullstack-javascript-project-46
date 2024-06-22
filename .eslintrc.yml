@@ -14,6 +14,7 @@ parserOptions:
   sourceType: module
 
 rules: 
+  indent: off
   no-console: 0
   import/extensions: 
   - error
