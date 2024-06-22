@@ -1,10 +1,10 @@
-import { stylishFormat, formatObject } from './stylishFormat.js'
+import { stylishFormat} from './stylishFormat.js'
 import { plainFormat } from './plainFormat.js'
 
 export default (astTree, format) => {
     switch (format) {
         case 'stylish':
-            return formatObject(stylishFormat(astTree))
+            return stylishFormat(astTree)
         case 'plain':
             return plainFormat(astTree)
         case 'json':
