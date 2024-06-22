@@ -6,7 +6,7 @@ export const plainFormat = (arr, parentKey = '') => {
             const formattedValue =
                 typeof value.value === 'object' && value.value !== null
                     ? '[complex value]'
-                    : `'${JSON.stringify(value.value).slice(1, JSON.stringify(value.value).length-1)}''`
+                    : JSON.stringify(value.value).replace(/"/g, "'")
             return `Property '${fullKey}' was added with value: ${formattedValue}`
             ///
         }
@@ -18,11 +18,11 @@ export const plainFormat = (arr, parentKey = '') => {
             const formattedOldValue =
                 typeof value.oldValue === 'object' && value.oldValue !== null
                     ? '[complex value]'
-                    : `'${JSON.stringify(value.oldValue).slice(1, JSON.stringify(value.oldValue).length-1)}'`
+                    : JSON.stringify(value.oldValue).replace(/"/g, "'")
             const formattedNewValue =
                 typeof value.newValue === 'object' && value.newValue !== null
                     ? '[complex value]'
-                    : `'${JSON.stringify(value.newValue).slice(1, JSON.stringify(value.newValue).length-1)}'`
+                    : JSON.stringify(value.newValue).replace(/"/g, "'")
             return `Property '${fullKey}' was updated. From ${formattedOldValue} to ${formattedNewValue}`
             ///
         }
