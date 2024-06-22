@@ -1,2 +1,2 @@
-import { gendiff } from './src/index.js'
-export default gendiff
+import { gendiff } from './src/index.js';
+export default gendiff;
