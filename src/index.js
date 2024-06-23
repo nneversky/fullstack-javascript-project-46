@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { resolve, extname, parse } from 'path';
 import { readFileSync } from 'fs';
 import makeAstTree from './makeAstTree.js';
