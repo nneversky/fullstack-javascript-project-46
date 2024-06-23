@@ -1,38 +1,38 @@
 name: Node CI
 
-on: 
+on:
   - push
 
 env:
   CI: true
 
 jobs:
-  build: 
+  build:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         node-version: [18.x]
-      
+
     steps:
       - name: Get code
         uses: actions/checkout@v3
-        
+
       - name: Install version Node
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-          
+
       - name: Install dependencies
         run: npm install --legacy-peer-deps
-        
+
       - name: Lint application
         run: make lint
-        
+
       - name: Test application
         run: make test
-        
+
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v6.0.0
         env:

@@ -1,10 +1,10 @@
 install:
-	npm ci
+	npm install
 
-make lint:
+lint:
 	npm run lint
 
-make test:
+test:
 	npm run test
 
 gendiff help:
@@ -20,4 +20,4 @@ test:
 	npm test --test-reporter=spec
 
 test-coverage:
-	npm test -- --coverage --coverageProvider=v8
+ 	npm run test-coverage
