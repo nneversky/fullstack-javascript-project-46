@@ -1,8 +1,8 @@
 import { resolve, extname, parse } from 'path';
 import { readFileSync } from 'fs';
-import { makeAstTree } from './makeAstTree.js';
+import makeAstTree from './makeAstTree.js';
 import getFormattedContent from './formatters/index.js';
-import { getParsedData } from '../src/parse.js';
+import getParsedData from '../src/parse.js';
 
 export const gendiff = (oneFileName, twoFileName, format = 'stylish') => {
   const absolutePath1 = resolve(process.cwd(), oneFileName);

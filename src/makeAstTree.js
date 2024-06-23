@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-export const makeAstTree = (obj1, obj2) => {
+const makeAstTree = (obj1, obj2) => {
   const unionKeys = _.union(Object.keys(obj1), Object.keys(obj2));
   const sortedKeys = _.sortBy(unionKeys);
 
@@ -33,3 +33,5 @@ export const makeAstTree = (obj1, obj2) => {
 
   return tree;
 };
+
+export default makeAstTree;

@@ -1,4 +1,4 @@
-export const plainFormat = (arr, parentKey = '') => {
+const plainFormat = (arr, parentKey = '') => {
   const formattedLines = arr.flatMap((value) => {
     const fullKey = parentKey ? `${parentKey}.${value.key}` : value.key;
 
@@ -34,3 +34,5 @@ export const plainFormat = (arr, parentKey = '') => {
 
   return formattedLines.filter((line) => line !== undefined).join('\n');
 };
+
+export default plainFormat;

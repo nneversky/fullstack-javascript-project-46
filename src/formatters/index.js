@@ -1,5 +1,5 @@
 import { stylishFormat } from './stylishFormat.js';
-import { plainFormat } from './plainFormat.js';
+import plainFormat from './plainFormat.js';
 
 export default (astTree, format) => {
   switch (format) {
