@@ -20,8 +20,8 @@ const stylishFormat = (tree) => {
     const currentIndent = getIndent(depth);
     const bracketIndent = getBracketIndent(depth);
     const lines = currentValue.flatMap((node) => {
-      const { 
-        key, children, status, value, oldValue, newValue 
+      const {
+        key, children, status, value, oldValue, newValue,
       } = node;
       switch (status) {
         case 'nested':
@@ -43,4 +43,4 @@ const stylishFormat = (tree) => {
   return iter(tree);
 };
 
-export { stylishFormat };
+export default stylishFormat;

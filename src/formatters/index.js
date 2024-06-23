@@ -1,4 +1,4 @@
-import { stylishFormat } from './stylishFormat.js';
+import stylishFormat from './stylishFormat.js';
 import plainFormat from './plainFormat.js';
 
 export default (astTree, format) => {
