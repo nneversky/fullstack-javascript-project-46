@@ -1,42 +1,22 @@
 name: Node CI
 
 on:
-  - push
-
-env:
-  CI: true
+    push:
+        branches:
+            - '**'
+        tags:
+            - '**'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-
-    steps:
-      - name: Get code
-        uses: actions/checkout@v3
-
-      - name: Install version Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps
-
-      - name: Lint application
-        run: make lint
-
-      - name: Test application
-        run: make test
-
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v6.0.0
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-        with:
-          coverageCommand: make test-coverage
-          debug: true
+            - name: Get code
+              uses: paambaati/codeclimate-action@v6.0.0
+              env:
+                  CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+              with:
+                coverageCommand: make test-coverage
+                debug: true

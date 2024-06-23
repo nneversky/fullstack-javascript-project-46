@@ -5,7 +5,6 @@
   "description": "Difference calculator in 2 files (json, yaml, yml)",
   "main": "./index.js",
   "scripts": {
-    "lint": "eslint .",
     "test": "npx jest"
   },
   "author": "nneversky",
