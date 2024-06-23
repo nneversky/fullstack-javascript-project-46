@@ -4,7 +4,7 @@ import makeAstTree from './makeAstTree.js';
 import getFormattedContent from './formatters/index.js';
 import getParsedData from './parse.js';
 
-const gendiff = (oneFileName, twoFileName, format = 'stylish') => {
+export const gendiff = (oneFileName, twoFileName, format = 'stylish') => {
   const absolutePath1 = resolve(process.cwd(), oneFileName);
   const ext1 = extname(absolutePath1);
   const filedata1 = readFileSync(absolutePath1, 'utf-8');
@@ -22,5 +22,3 @@ const gendiff = (oneFileName, twoFileName, format = 'stylish') => {
   const formattedStr = getFormattedContent(astTree, format);
   return formattedStr;
 };
-
-export default gendiff;
