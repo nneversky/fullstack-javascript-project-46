@@ -9,6 +9,7 @@ program
     .description('Compares two configuration files and shows a difference.')
     .option('-f, --format [type]', 'output format: plain or (recursive default)')
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     .action((filepath1, filepath2, format) => {
         const formattedStr = gendiff(filepath1, filepath2, program.opts().format);
 

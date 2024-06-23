@@ -9,7 +9,6 @@ extends:
     - 'eslint:recommended'
     - 'plugin:@typescript-eslint/recommended'
 rules:
-    indent: off
     complexity:
         - error
         - 10
