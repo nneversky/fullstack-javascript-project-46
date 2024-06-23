@@ -4,15 +4,15 @@ import { gendiff } from '../src/index.js';
 const program = new Command();
 
 program
-    .version('14.8.8')
-    .arguments('<filepath1> <filepath2>')
-    .description('Compares two configuration files and shows a difference.')
-    .option('-f, --format [type]', 'output format: plain or (recursive default)')
+  .version('14.8.8')
+  .arguments('<filepath1> <filepath2>')
+  .description('Compares two configuration files and shows a difference.')
+  .option('-f, --format [type]', 'output format: plain or (recursive default)')
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    .action((filepath1, filepath2, format) => {
-        const formattedStr = gendiff(filepath1, filepath2, program.opts().format);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  .action((filepath1, filepath2, format) => {
+    const formattedStr = gendiff(filepath1, filepath2, program.opts().format);
 
-        console.log(formattedStr);
-    });
+    console.log(formattedStr);
+  });
 program.parse();
